@@ -1,0 +1,24 @@
+{
+  "id": "/summit2",
+  "cpus": 1,
+  "mem": 128,
+  "instances": 1,
+  "container": {
+    "docker": {
+      "image": "registry.marathon.l4lb.thisdcos.directory:5000/summit2:latest",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp",
+          "name": "https"
+        }
+      ],
+      "network": "BRIDGE"
+    }
+  },
+  "labels": {
+    "DCOS_SERVICE_PORT_INDEX": "0",
+    "DCOS_SERVICE_SCHEME": "http",
+    "DCOS_SERVICE_NAME": "summit2"
+  }
+}
