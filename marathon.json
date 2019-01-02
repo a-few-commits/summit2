@@ -8,9 +8,9 @@
       "image": "registry.marathon.l4lb.thisdcos.directory:5000/summit2:latest",
       "portMappings": [
         {
-          "containerPort": 80,
+          "containerPort": 3838,
           "protocol": "tcp",
-          "name": "https"
+          "name": "http"
         }
       ],
       "network": "BRIDGE"
