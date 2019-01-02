@@ -25,13 +25,6 @@ node {
     stage 'Publish'
     sh "docker push registry.marathon.l4lb.thisdcos.directory:5000/summit2:${gitCommit()}"
 
-    // Test links in file
-    stage 'Test'
-    sh "docker run -p 8085:80 -d --name=test-container-${env.BUILD_NUMBER} registry.marathon.l4lb.thisdcos.directory:5000/summit2:${gitCommit()}"
-    sh "docker exec test-container-${env.BUILD_NUMBER} linkchecker /usr/share/nginx/html/index.html"
-    sh "docker kill test-container-${env.BUILD_NUMBER}"
-    sh "docker rm test-container-${env.BUILD_NUMBER}"
-
     // Deploy
     stage 'Deploy'
 
