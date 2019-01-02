@@ -3,6 +3,7 @@
   "cpus": 1,
   "mem": 128,
   "instances": 1,
+  "cmd": "shiny-server",
   "container": {
     "docker": {
       "image": "registry.marathon.l4lb.thisdcos.directory:5000/summit2:latest",
