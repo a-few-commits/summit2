@@ -30,6 +30,8 @@ RUN R -e "install.packages('rtweet')"
 RUN R -e "install.packages('wordcloud')"
 RUN R -e "install.packages('RWeka')"
 RUN R -e "install.packages('syuzhet')"
+
+RUN apt-get install -y libgsl-dev
 RUN R -e "install.packages('topicmodels')"
 
 
