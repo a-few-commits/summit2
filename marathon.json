@@ -17,9 +17,38 @@
       "network": "BRIDGE"
     }
   },
+  "env": {
+    "SHINY_LOG_LEVEL": "TRACE",
+    "access_secret": {
+      "secret": "secret0"
+    },
+    "access_token": {
+      "secret": "secret1"
+    },
+    "api_key": {
+      "secret": "secret2"
+    },
+    "api_secret": {
+      "secret": "secret3"
+    }
+  },
   "labels": {
     "DCOS_SERVICE_PORT_INDEX": "0",
     "DCOS_SERVICE_SCHEME": "http",
     "DCOS_SERVICE_NAME": "summit2"
+  },
+  "secrets": {
+    "secret0": {
+      "source": "access_secret"
+    },
+    "secret1": {
+      "source": "access_token"
+    },
+    "secret2": {
+      "source": "api_key"
+    },
+    "secret3": {
+      "source": "api_secret"
+    }
   }
 }
