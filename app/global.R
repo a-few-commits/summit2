@@ -19,12 +19,15 @@ runOnline = T
 
 # Load twitter authorization
 if(runOnline){
-    secrets <- fromJSON(file='twitter_secrets.json.nogit')
+    api_key <- Sys.getenv("api_key")
+    api_secret <- Sys.getenv("api_secret")
+    access_token <- Sys.getenv("access_token")
+    access_token_secret <- Sys.getenv("access_token_secret")
     
-    setup_twitter_oauth(secrets$api_key,
-                        secrets$api_secret,
-                        secrets$access_token,
-                        secrets$access_token_secret)
+    setup_twitter_oauth(api_key,
+                        api_secret,
+                        access_token,
+                        access_token_secret)
 }
 
 # Grab tweets
