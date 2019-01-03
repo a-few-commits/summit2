@@ -32,7 +32,7 @@ node {
 
     marathon(
         url: 'http://marathon.mesos:8080',
-        forceUpdate: false,
+        forceUpdate: true,
         filename: 'marathon.json',
         id: 'summit2',
         docker: "registry.marathon.l4lb.thisdcos.directory:5000/summit2:${gitCommit()}".toString()
