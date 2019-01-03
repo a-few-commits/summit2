@@ -1,7 +1,7 @@
 {
   "id": "/summit2",
   "cpus": 1,
-  "mem": 128,
+  "mem": 512,
   "instances": 1,
   "cmd": "shiny-server && while true; do Rscript /srv/shiny-server/twitter_data.R; sleep 1800; done",
   "container": {
