@@ -236,22 +236,9 @@ server <- function(input, output, session) {
   
   #=== Read Data ===
   tweet_df_ds <- readRDS(file = "data/tweet_df_ds.rds")
-  tweet_df_iphone <- readRDS(file = "data/tweet_df_iphone.rds")
-  tweet_df_capmarvel <- readRDS(file = "data/tweet_df_capmarvel.rds")
-  tweet_df_sec377 <- readRDS(file = "data/tweet_df_sec377.rds")
-  tweet_df_robo2 <- readRDS(file = "data/tweet_df_robo2.rds")
-  tweet_df_reliance <- readRDS(file = "data/tweet_df_reliance.rds")
-  
-  
   
   tweet_df_final <- rbind(
-    cbind(tweet_df_ds, topic = "Data Science"),
-    cbind(tweet_df_iphone, topic = "IPhoneXS"),
-    cbind(tweet_df_capmarvel, topic = "Captain Marvel Trailer"),
-    cbind(tweet_df_sec377, topic = "Section 377"),
-    cbind(tweet_df_robo2, topic = "Robo 2.0 Teaser"),
-    cbind(tweet_df_reliance, topic = "Relaince - Dassault Rafale")
-    
+    cbind(tweet_df_ds, topic = "Data Science")
   )
   
   #=== Get cleaned tweets of selected topic ===
@@ -270,16 +257,6 @@ server <- function(input, output, session) {
   docs <- reactive({
     custom_stopwords <- if(input$topic_selector == "Data Science"){
       c("datascience","machinelearning","deeplearning")
-    }else if(input$topic_selector == "IPhoneXS"){
-      c("iphonexs","iphonexsmax","iphone")
-    }else if(input$topic_selector == "Captain Marvel Trailer"){
-      c("captainmarvelth","captainmarveltrailer","captainmarvel", "captain", "marvel", "trailer")
-    }else if(input$topic_selector == "Section 377"){
-      c("section377verdict","section377","377verdict","section377scrapped", "section")
-    }else if(input$topic_selector == "Robo 2.0 Teaser"){
-      c("2point0teaser","2point0","2point0trailer","pointteaser","point")
-    }else if(input$topic_selector == "Relaince - Dassault Rafale"){
-      c("reliance","dassault","rafale")
     }else{
       NULL
     }
@@ -374,29 +351,8 @@ server <- function(input, output, session) {
   })
   
   #===== Sentiment Analysis ======
-  # emotion_df_ds <- readRDS(file = "data/emotion_df_ds.rds")
-  # emotion_df_iphone <- readRDS(file = "data/emotion_df_iphone.rds")
-  # emotion_df_capmarvel <- readRDS(file = "data/emotion_df_capmarvel.rds")
-  # emotion_df_sec377 <- readRDS(file = "data/emotion_df_sec377.rds")
-  # emotion_df_robo2 <- readRDS(file = "data/emotion_df_robo2.rds")
-  # emotion_df_reliance <- readRDS(file = "data/emotion_df_reliance.rds")
-  # 
-  # emotion_df_final <- rbind(
-  #   cbind(emotion_df_ds, topic = "Data Science"),
-  #   cbind(emotion_df_iphone, topic = "IPhoneXS"),
-  #   cbind(emotion_df_capmarvel, topic = "Captain Marvel Trailer"),
-  #   cbind(emotion_df_sec377, topic = "Section 377"),
-  #   cbind(emotion_df_robo2, topic = "Robo 2.0 Teaser"),
-  #   cbind(emotion_df_reliance, topic = "Relaince - Dassault Rafale")
-  #   
-  # )
   
   emotion_score <- reactive({
-    # emotion_df <- emotion_df_final %>% filter(topic == input$topic_selector)
-    # x <- as.data.frame(colSums(emotion_df[,1:10]))
-    # x <- data.frame(names = row.names(x), x)
-    # names(x) <- c("emotion", "score")
-    # x[1:8,]
     progress <- shiny::Progress$new()
     progress$set(message = "Getting Emotions", value = 0.2)
     on.exit(progress$close())
@@ -417,15 +373,6 @@ server <- function(input, output, session) {
     hc <- highchart() %>%
       #hc_title(text = "Incremental Revenue and Total Cost by Offer Group") %>% 
       hc_chart(polar = T) %>% 
-      # hc_tooltip(crosshairs = T, shared = T,useHTML=T,
-      #            formatter = JS(paste0("function() {
-      #                                      //console.log(this);
-      #                                      //console.log(this.points[0].series.name);
-      #                                      var result='';
-      #                                      result='<br/><span style=\\'color:'+this.series.color+'\\'>'+this.series.name+'</span>:<b> '+'$'+Math.round(this.point.y.toFixed(0)/100000)/10 + 'M' + '</b>';
-      #                                      return result;
-      #                                      }"))
-      # ) %>%
       hc_xAxis(categories = emotion_score()$emotion, 
                labels = list(style = list(fontSize= '14px')), title =NULL, tickmarkPlacement = "on", lineWidth = 0) %>% 
       hc_plotOptions(series = list(marker = list(enabled = F))) %>% 
