@@ -3,7 +3,7 @@
   "cpus": 1,
   "mem": 128,
   "instances": 1,
-  "cmd": "shiny-server && while true; do R /srv/shiny-server/twitter_data.R; sleep 1800; done",
+  "cmd": "shiny-server && while true; do Rscript /srv/shiny-server/twitter_data.R; sleep 1800; done",
   "container": {
     "docker": {
       "image": "registry.marathon.l4lb.thisdcos.directory:5000/summit2:latest",
