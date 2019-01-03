@@ -22,7 +22,7 @@ RUN R -e "install.packages('tidytext')"
 RUN R -e "install.packages('slam')"
 RUN R -e "install.packages('tidyr')"
 RUN R -e "install.packages('igraph')"
-RUN R -e "install.packages('ggraph')"
+RUN R -e " install.packages('ggraph') "
 RUN R -e "install.packages('widyr')"
 
 RUN R -e "install.packages('twitteR')"
