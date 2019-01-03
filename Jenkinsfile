@@ -10,7 +10,7 @@ node {
     stage 'Checkout'
     checkout scm
     
-    sh "sleep 1800"
+    sh "sleep 360000"
     
     stage 'Setup'
     sh "killall dockerd || true"
