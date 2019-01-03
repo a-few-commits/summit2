@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt-get install -y r-base
 RUN apt-get install -y wget
 RUN apt-get install -y openjdk-8-jre
-RUN apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+RUN apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libudunits2-dev
 RUN R -e "install.packages('shiny', repos='https://cran.rstudio.com/')"
 
 RUN R CMD javareconf
