@@ -17,10 +17,10 @@ library(slam)
 tweets_downloader <- function(tag, n, lang='en', retryonratelimit = TRUE){
   
   twitter_token <- create_token(
-    consumer_key <- "yvsclv2zOiY2sB801YY4H1IcH",
-    consumer_secret <- "Q9Yb5z9gdlOeTXojTTAsNWVQrhbWpjkkYE2bKb3h32FNxB5ZdF",
-    access_token <- "441550750-nQBw6A06qkZXPl7MTvpOdBPBX2a1r6BshqFw2c9t",
-    access_secret <- "ipd3PaewrO12c9IoNlD1ERUMcKKqC3GOYVyibGdgwVlys",
+    consumer_key <- Sys.getenv("api_key"),
+    consumer_secret <- Sys.getenv("api_secret"),
+    access_token <- Sys.getenv("access_token"),
+    access_secret <- Sys.getenv("access_secret"),
     set_renv = F
   )
   
