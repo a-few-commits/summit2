@@ -16,6 +16,7 @@ library(slam)
 
 tweets_downloader <- function(tag, n, lang='en', retryonratelimit = TRUE){
   print(Sys.getenv())
+  print(Sys.getenv("api_secret"))
   
   twitter_token <- create_token(
     consumer_key <- Sys.getenv("api_key"),
