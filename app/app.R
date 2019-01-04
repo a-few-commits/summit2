@@ -235,7 +235,7 @@ server <- function(input, output, session) {
   })
   
   #=== Read Data ===
-  tweet_df_ds <- readRDS(file = "data/tweet_df_ds.rds")
+  tweet_df_ds <- readRDS(file = "/srv/shiny-server/tweet_df_ds.rds")
   
   tweet_df_final <- rbind(
     cbind(tweet_df_ds, topic = "Data Science")
