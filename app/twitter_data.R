@@ -92,7 +92,7 @@ tweets_cleaner_tm <- function(clean_tweet, custom_stopwords = c("bla bla")){
 
 
 #=== Data Science 
-tweet_df_ds <- tweets_downloader(tag="#DataScience OR #MachineLearning OR #DeepLearning", n=50000, lang='en', 
+tweet_df_ds <- tweets_downloader(tag="#DataScience OR #MachineLearning OR #DeepLearning", n=1000, lang='en', 
                                  retryonratelimit = TRUE)
 saveRDS(tweet_df_ds, file = "tweet_df_ds.rds")
 
