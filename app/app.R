@@ -18,7 +18,7 @@ library(widyr)
 
 #=== UI Code Starts ===
 
-header <- dashboardHeader(title = "Summit Dashboard"3)
+header <- dashboardHeader(title = "Summit Dashboard")
 
 sidebar <- dashboardSidebar(
   sidebarMenu(id = 'menu',
