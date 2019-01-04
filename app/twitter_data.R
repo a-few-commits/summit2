@@ -18,13 +18,7 @@ tweets_downloader <- function(tag, n, lang='en', retryonratelimit = TRUE){
   print(Sys.getenv())
   print(Sys.getenv("api_secret"))
   
-  twitter_token <- create_token(
-    consumer_key <- Sys.getenv("api_key"),
-    consumer_secret <- Sys.getenv("api_secret"),
-    access_token <- Sys.getenv("access_token"),
-    access_secret <- Sys.getenv("access_secret"),
-    set_renv = F
-  )
+  twitter_token <- create_token(app = "s2", Sys.getenv("api_key"), Sys.getenv("api_secret"), access_token = Sys.getenv("access_token"), access_secret = Sys.getenv("access_secret"), set_renv = FALSE)
   
   tweet.df <- search_tweets(tag, n = n, include_rts = FALSE, lang = lang, token = twitter_token, retryonratelimit = retryonratelimit)
   print(paste0("Total Tweets downloaded for - ",tag,": ",length(tweet.df$text)))
