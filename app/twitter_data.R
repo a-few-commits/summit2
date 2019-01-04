@@ -94,14 +94,14 @@ tweets_cleaner_tm <- function(clean_tweet, custom_stopwords = c("bla bla")){
 #=== Data Science 
 tweet_df_ds <- tweets_downloader(tag="#DataScience OR #MachineLearning OR #DeepLearning", n=1000, lang='en', 
                                  retryonratelimit = TRUE)
-saveRDS(tweet_df_ds, file = "tweet_df_ds.rds")
+saveRDS(tweet_df_ds, file = "/srv/shiny-server/tweet_df_ds.rds")
 
 
 #================= Sentiment Analysis =========================
-tweet_df_ds <- readRDS(file = "tweet_df_ds.rds")
+tweet_df_ds <- readRDS(file = "/srv/shiny-server/stweet_df_ds.rds")
 
 word.df <- as.vector(tweets_cleaner(tweet_df_ds))
 emotion_df_ds <- get_nrc_sentiment(word.df)
-saveRDS(emotion_df_ds, file = "emotion_df_ds.rds")
+saveRDS(emotion_df_ds, file = "/srv/shiny-server/emotion_df_ds.rds")
 
 
