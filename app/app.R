@@ -54,7 +54,7 @@ body <- dashboardBody(
   #tags$head(tags$style(HTML("div.main-header {text-align: center;}"))),
   tags$script(HTML('
                    $(document).ready(function() {
-                   $("header").find("nav").append(\'<span class="myClass" style="white-space:pre">                                                        Twitter Talks, Shiny Sparks !</span>\');
+                   $("header").find("nav").append(\'<span class="myClass" style="white-space:pre">                                                        Summit Dashboard</span>\');
                    })
                    ')),
   tags$head(tags$style(HTML('.modal-sm {width: 40px;}'))),
