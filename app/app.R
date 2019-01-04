@@ -18,8 +18,7 @@ library(widyr)
 
 #=== UI Code Starts ===
 
-header <- dashboardHeader(title= img(src = 'tweet_grey.png',
-                                     title = "Twitter", height = "30px"))
+header <- dashboardHeader(title = "Summit Dashboard"3)
 
 sidebar <- dashboardSidebar(
   sidebarMenu(id = 'menu',
@@ -54,7 +53,7 @@ body <- dashboardBody(
   #tags$head(tags$style(HTML("div.main-header {text-align: center;}"))),
   tags$script(HTML('
                    $(document).ready(function() {
-                   $("header").find("nav").append(\'<span class="myClass" style="white-space:pre">Summit Dashboard</span>\');
+                   $("header").find("nav").append(\'<span class="myClass" style="white-space:pre"></span>\');
                    })
                    ')),
   tags$head(tags$style(HTML('.modal-sm {width: 40px;}'))),
@@ -82,13 +81,13 @@ body <- dashboardBody(
             fluidPage(
               fluidRow(
                 column(7, id = "col_word_cloud",
-                       box(width=12, height=550, solidHeader = F, title = strong("The Word Cloud"),
+                       box(width=12, height=550, solidHeader = F, title = strong("Word Cloud"),
                            radioButtons("word_cloud_gram",NULL, c("Uni-gram","Bi-gram"), selected = "Uni-gram", inline = T),
                            #plotOutput("word_cloud_plot",height = "300px")
                            wordcloud2Output("word_cloud_plot",height = "470px"))
                 ),
                 column(5, id = "col_freq",
-                       box(width=12, height=550, solidHeader = F, title = strong("Here are the frequent words.."),
+                       box(width=12, height=550, solidHeader = F, title = strong("Frequent Words"),
                            highchartOutput("word_freq_plot", height=500)
                        )
                        
@@ -109,7 +108,7 @@ body <- dashboardBody(
                        box(width=NULL, height=270, solidHeader = F, title = strong("Sentiment Polarity"),
                            highchartOutput("sentiment_plot",height = 210)
                        ),
-                       box(width=NULL, height=270, solidHeader = F, title = strong("The extreme ones.."),
+                       box(width=NULL, height=270, solidHeader = F,
                            htmlOutput("pos_tweet"),
                            htmlOutput("neg_tweet")
                        )
@@ -137,7 +136,7 @@ body <- dashboardBody(
     tabItem("popular",
             fluidPage(
               fluidRow(
-                box(width=12, height=370, title = strong("Let us check some popular tweets !!"),
+                box(width=12, height=370, title = strong("Popular Tweets"),
                     radioButtons("fav_rt_button",NULL, c("Most Favorited","Most Retweeted"), selected = "Most Favorited", inline = T),hr(),
                     htmlOutput("fav_rt_tweets"))
               )
