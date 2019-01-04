@@ -14,9 +14,7 @@ library(slam)
 
 #======== User defined functions ====================
 
-tweets_downloader <- function(tag, n, lang='en', retryonratelimit = TRUE){
-  print(Sys.getenv())
-  print(Sys.getenv("api_secret"))
+tweets_downloader <- function(tag, n, lang='en', retryonratelimit = TRUE) {
   
   twitter_token <- create_token(app = "s2", Sys.getenv("api_key"), Sys.getenv("api_secret"), access_token = Sys.getenv("access_token"), access_secret = Sys.getenv("access_secret"), set_renv = FALSE)
   
