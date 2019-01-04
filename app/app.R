@@ -2,16 +2,12 @@ library(shiny)
 library(shinydashboard)
 library(highcharter)
 library(dplyr)
-#library(twitteR)
-#library(rtweet)
 library(NLP)
 library(tm) # text mining
 library(stringr)
 library(SnowballC) # text stemming
 library(RColorBrewer) # Color Palettes
-#library(wordcloud)
 library(wordcloud2)
-#library(topicmodels)
 library(tidytext)
 library(slam)
 library(tidyr)
@@ -143,23 +139,7 @@ body <- dashboardBody(
               fluidRow(
                 box(width=12, height=370, title = strong("Let us check some popular tweets !!"),
                     radioButtons("fav_rt_button",NULL, c("Most Favorited","Most Retweeted"), selected = "Most Favorited", inline = T),hr(),
-                    htmlOutput("fav_rt_tweets")),
-                box(width=12, height=300, title = strong("Story - Screenplay - Direction ..."),
-                    tags$ul(
-                      tags$li(strong(tags$a("Murali - LinkedIn Connect", href = "https://www.linkedin.com/in/muralimohanakrishnadandu/", target="_blank"))," | ",
-                              strong(tags$a("Medium Article Link", href = "https://www.linkedin.com/in/muralimohanakrishnadandu/", target="_blank")))
-                    ),
-                    hr(),
-                    h5(strong("Twitter Data:"),style = 'color:rgb(0, 112, 192)'),strong("Tweets downloaded during the time period 15th Sep'2018 - 22nd Sep'2018 with following hashtags - "),
-                    tags$ul(
-                      tags$li("Data Science (#DataScience OR #MachineLearning OR #DeepLearning): 37426 tweets"),
-                      tags$li("IPhoneXS (#iPhoneXS OR #iPhoneXSMax): 21876 tweets"),
-                      tags$li("Captain Marvel Trailer (#CaptainMarvelTH OR #CaptainMarvelTrailer OR #captainmarvel): 46092 tweets"),
-                      tags$li("Section 377 (#Section377Verdict OR #Section377 OR #377Verdict OR #section377scrapped): 1232 tweets"),
-                      tags$li("Robo 2.0 Teaser (#2Point0Teaser OR #2Point0 OR #2point0trailer): 5395 tweets"),
-                      tags$li("Reliance-Dassault Rafale (#Reliance OR #reliance OR #Dassault OR #Rafale): 7991 tweets")
-                    )
-                )
+                    htmlOutput("fav_rt_tweets"))
               )
             )
             
@@ -230,7 +210,7 @@ server <- function(input, output, session) {
   #== Select the topic ===
   output$topic_selector <- renderUI({
     selectInput("topic_selector",label = "Select Twitter Topic:",
-                choices = c("Data Science", "IPhoneXS", "Captain Marvel Trailer", "Section 377", "Robo 2.0 Teaser", "Relaince - Dassault Rafale"),
+                choices = c("Data Science"),
                 selected = "Data Science", width = "100%")
   })
   
